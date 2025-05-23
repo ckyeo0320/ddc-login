@@ -1,0 +1,210 @@
+@charset "UTF-8";
+/* CSS Document - starts with layout for smallest device, media queries for larger devices up through tablet - desktop redirects to fb*/
+
+.container {
+    max-width: 100% !important;
+}
+
+#detection, #landing {
+  display: none;
+}
+
+#landing.show, #detection.show {
+  display: block;
+  margin-top:40px;
+}
+
+body {
+ 	font-size:100%;
+ 	background-image: url(https://static.doubledowncasino2.com/play/20190702/img/bgBottom.png), url(https://static.doubledowncasino2.com/play/20190702/img/bg.png);
+	background-repeat: no-repeat,  no-repeat;
+	background-position: bottom, center;
+	background-size: 100%, cover !important;
+	background-attachment: fixed, fixed !important;
+	min-height: 100%;
+  color:#bdd9e6;
+  margin:0;
+}
+
+a {
+  color:#bdd9e6;
+  outline:none;
+}
+
+h1 {
+  padding:0;
+  width:320px;height:199px;margin:0 auto;
+  background:url(https://static.doubledowncasino2.com/play/img/logo.png);
+}
+
+h1 .hide {position:absolute;height:0;overflow:hidden;}
+
+ul.login {
+  list-style:none;
+  padding:0;
+  margin:0 auto;
+  max-width:900px;
+}
+
+ul.login li {
+  display:block;
+  float:left;
+  width:45%;
+}
+
+ul.login a {
+  display:block;
+  width:100%;
+  height:0;
+  max-width:420px;
+  padding-top:67.62%;
+  background-size:100%;
+}
+
+.login-facebook {
+	background:url(https://static.doubledowncasino2.com/play/20190702/img/step-download.png);
+}
+
+.login-guest {
+	background:url(https://static.doubledowncasino2.com/play/20190702/img/step-play.png);
+}
+
+ul.login a:active, ul.login a:hover {
+	background-position:0 100%;
+	outline:none;
+}
+
+ul.login .hide {
+	position:absolute;
+	height:0;
+	overflow:hidden;
+}
+
+h3 {
+  clear:left;
+  text-transform:uppercase;
+  margin:3.0em 0 2.0em 0;
+  font-size:0.8em;
+  text-align:center;
+  color:#fff !important;
+  font-weight:normal;
+  letter-spacing:3px;
+  word-spacing:3px;
+}
+
+ul.mobile {
+  list-style:none;padding:0;margin:0 auto;
+  overflow:hidden;
+  max-width:543px;
+}
+
+ul.mobile li {
+  display:block;width:177px;height:91px;float:left;
+}
+
+ul.login li.and {
+  display:block;
+	width:10%;
+	height:91px;
+	float:left;
+	padding-top:85px;
+}
+
+ul.mobile a {
+  display:block;
+  background-size:100%;
+  background-position:0 100%;
+  background-repeat:no-repeat;
+}
+
+html>/**/body ul.mobile a:active, ul.mobile a:hover {
+	background-position:0 0;
+	outline:none;
+}
+
+.and-image {
+	max-width:97px;
+	height:104px;
+	margin-top:0px;
+	background:url(https://static.doubledowncasino2.com/play/20190702/img/and.png);
+	background-size:100%;background-repeat:no-repeat;}
+
+ul.mobile .hide {
+	position:absolute;
+	height:0;
+	overflow:hidden;
+}
+
+.icons {
+	margin: 10px 0 220px 0;
+}
+
+
+/*-------MEDIA QUERIES---------------------------------*/
+
+@media screen and (max-width:1366px) and (orientation: landscape) { /*iPad Pro*/
+	body {
+		background-image: url(https://static.doubledowncasino2.com/play/20190702/img/bgBottom.png), url(https://static.doubledowncasino2.com/play/20190702/img/bg.png);
+		background-size: 100%, cover !important;
+		background-attachment: fixed, fixed !important;
+	}
+
+	ul.login {
+		width: 69%;
+	}
+}
+
+@media screen and (max-width:1024px) and (orientation: landscape) { /*iPad*/
+	body {
+		background-image: url(https://static.doubledowncasino2.com/play/20190702/img/bgBottom.png), url(https://static.doubledowncasino2.com/play/20190702/img/bg.png);
+		background-size: 100%, cover !important;
+		background-attachment: fixed, fixed !important;
+	}
+
+	#landing.show, #detection.show {
+		margin-top: 10px;
+	}
+
+	ul.login {
+		width: 100%;
+	}
+
+	ul.login a {
+		width: 420px;
+		height: 285px;
+		padding-top: 48.62%;
+	}
+
+	ul.login li.and {
+		padding-top: 94px;
+	}
+
+  .and-image {
+  	max-width:97px;
+  	height:104px;
+  	margin-top:0px;
+  }
+
+	.icons {
+		margin: 10px 0 0 0;
+	}
+}
+
+@media screen and (max-width:812px) and (orientation: landscape) { /*iPhone X, 6/7/8 Plus & 6/7/8 */
+	body {
+		background-image: url(https://static.doubledowncasino2.com/play/20190702/img/backgroundImage.png), url(https://static.doubledowncasino2.com/play/20190702/img/bg.png);
+		background-size: 100%, cover !important;
+		background-attachment: scroll, fixed !important;
+	}
+
+	ul.login {
+		width: 95%;
+		margin-top: -40px;
+	}
+}
+
+@media screen and (max-width:414px) and (orientation: portrait) { /*iPhone X, 6/7/8 Plus & 6/7/8 */
+	body {
+		background-size: 200%, cover !important;
+	}
+}

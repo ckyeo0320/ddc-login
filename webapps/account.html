@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DoubleDown Casino on Mobile!</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://play.doubledowncasino.com/play20210618/20190702/external/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://play.doubledowncasino.com/play20210618/20190702/external/bootstrap.min.js"></script>
+	<!-- Google Fonts -->
+	<link href="https://play.doubledowncasino.com/play20210618/20190702/external/fontsgoogleapiscom.css"
+		rel="stylesheet">
+
+	<style>
+		.list-group-item {
+			background-color: rgba(0, 0, 0, 0) !important;
+			border: none !important;
+		}
+
+		body {
+			background-image: url(https://static.doubledowncasino2.com/play/20190702/img/bg.png);
+			background-repeat: no-repeat, no-repeat;
+		    background-position: top;
+		    background-size: 100%, cover !important;
+		    background-attachment: fixed, fixed !important;
+		    min-height: 100%;
+		    background-color: #000;
+		    display: block;
+		}
+		*, ::after, ::before {
+		    box-sizing: border-box;
+		}
+	</style>
+	<script>
+		// /user/account/status/skey
+		var hostMap = {
+			"dev": "https://lct.dev.doubledowncasino2.com",
+			"qa": "https://lct.qa.doubledowncasino2.com",
+			"www-beta": "https://www.doubledowncasino2.com",
+			"www": "https://www.doubledowncasino2.com"
+		};
+		$(document).ready(function(e) {
+			paramsStr = location.search.replace(/^\?/, '').split("&");
+			var skey = null;
+			for(i=0; i<paramsStr.length; i++) {
+				paramPair = paramsStr[i].split('=');
+				if(paramPair.length != 2) {
+					continue;
+				}
+				if(paramPair[0] == 'skey') {
+					skey = paramPair[1];
+				}
+			}
+			if(skey == null) {
+				$("#deletionInfoNotFound").show();
+			}
+			reqHost = hostMap[location.host.split('.')[0]];
+			if(reqHost) {
+				 $.ajax({
+	                    'type': 'GET',
+	                    'url': reqHost + '/user/account/status/'+skey,
+	                    method: 'GET',
+	                    dataType: 'json',
+	                    success: function success(json) {
+							document.getElementById("userId").innerHTML = json.userId;
+							document.getElementById("status").innerHTML = json.status;
+							if(json.requestDate) {
+								try {
+									document.getElementById("requestDate").innerHTML = new Date(json.requestDate.time).toString();
+								}
+								catch(e) {
+									document.getElementById("requestDate").innerHTML = json.requestDate;
+								}
+							}
+							else {
+								$("#requestDate").parent().hide();
+							}
+							if(json.deleteDate) {
+								try {
+									document.getElementById("deleteDate").innerHTML = new Date(json.deleteDate.time).toString();
+								}
+								catch(e) {
+									document.getElementById("deleteDate").innerHTML = json.deleteDate;
+								}
+							}
+							else {
+								$("#deleteDate").parent().hide();
+							}
+							$("#deletionInfo").show();
+	                    },
+	                    error: function error(json) {
+							$("#deletionInfoNotFound").show();
+	                    }
+	                });
+			}
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1><span class="hide">Double Down Casino</span></h1>
+
+	<div id="landing" class="show">
+		<h3>
+			Account Deletion Status
+		</h3>
+		<div class="container text-center" style="width: 500px;">
+			<table class="table" style="color: #fff">
+				<tbody id="deletionInfo" style="display: none;">
+					<tr>
+						<th>UserID</th>
+						<td id="userId"></td>
+					</tr>
+					<tr>
+						<th>Status</th>
+						<td id="status"></td>
+					</tr>
+					<tr>
+						<th>Request Date</th>
+						<td id="requestDate"></td>
+					</tr>
+					<tr>
+						<th>Scheduled account deletion date</th>
+						<td id="deleteDate"></td>
+					</tr>
+				</tbody>
+				<tbody id="deletionInfoNotFound" style="display: none;">
+					<tr>
+						<th>NOT FOUND</th>
+					</tr>
+				</tbody>
+			</table class="table">
+		</div>
+	</div>
+
+</body>
+
+</html>

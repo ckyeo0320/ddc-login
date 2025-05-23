@@ -1,0 +1,861 @@
+@font-face {
+  font-family:'LeagueSpartan-SemiBold';
+  src: url('../font/LeagueSpartan-SemiBold.woff') format('woff');
+  }
+
+  @keyframes fade_in {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+
+  html, body {
+  background-image: url("../images/bg_gradient_blue.jpg");
+  background-color: #000000;
+  background-repeat: repeat-x;
+  overflow-x: hidden;
+  font-size: 14px !important;
+  }
+
+  /* disable background-image */
+  html,
+  body {
+    background-image: none;
+  } 
+
+  .navbar-dark .navbar-nav .nav-link,
+  .dropdown-item.text-center {
+    text-align: center;
+    color: gold !important;
+    font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif !important;
+    font-size: 16px !important;
+}
+
+.form-group {
+margin-bottom: 1rem;
+}
+
+.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+border-top-right-radius: .25em !important;
+border-bottom-right-radius: .25em !important;
+}
+
+.navbar-dark .navbar-toggler {
+color:gold ;
+border-color: gold !important;
+}
+
+  .lds-dual-ring2 {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+  }
+
+  .lds-dual-ring2:after {
+    content: " ";
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-top: 650px;
+    margin-left: 930px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    border-color: #ffffff transparent #fff transparent;
+    animation: lds-dual-ring2 1.2s linear infinite;
+  }
+
+  @keyframes lds-dual-ring2 {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  .progress2 {
+    position: absolute;
+    left: 720px;
+    top: 720px;
+    border-radius: 30px;
+    width: 500px;
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .progress-bar2 {
+    height: 18px;
+    border-radius: 30px;
+    background-image:
+      linear-gradient(to bottom, rgba(50, 60, 18, 0.9), rgba(255, 255, 255, 0.05));
+    transition: 0.4s linear;
+    transition-property: width, background-color;
+  }
+
+  .progress-moved .progress-bar2 {
+    width: 100%;
+    background-color: #0cea1d;
+    animation: progressAnimation 6s;
+  }
+
+  @keyframes progressAnimation {
+    0% {
+      width: 0%;
+      background-color: #7DC8E8;
+    }
+
+    100% {
+      width: 100%;
+      background-color: #0cea1d;
+    }
+  }
+
+  .loading-text {
+    font-family: 'LeagueSpartan-SemiBold';
+    font-size: 24px;
+    white-space: nowrap;
+    font-variant-caps: all-petite-caps;
+    -webkit-text-stroke: 1px #0000001a;
+    font-size: 2;
+    color: rgb(247 241 241);
+    text-align: center;
+    opacity: 1;
+  }
+
+  .nav-item .nav-link {
+  color: gold;
+  font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+}
+  .nav-item-crawler.nav-link, .nav-item-crawler.nav-link a{
+  color: gold;
+  font-size: 1rem;
+  font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+}
+
+.nav-link:hover {
+    opacity: 0.5;
+}
+
+
+.nav-link:active {
+  opacity: 0.5;
+}
+
+
+.selected a {
+  color: #ffffff;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.button_play:active {
+  opacity: 0.5;
+}
+
+.button_play:hover {
+  /* filter: hue-rotate(120deg); */
+
+  filter: grayscale(100%);
+}
+
+.btn_disable {
+  filter: grayscale(100%);
+}
+
+.divider_desktop {
+  display: block;
+}
+
+.divider_mobile {
+  display: none;
+}
+
+ .loginSection {
+  padding-top: 0px;
+}
+
+.registerSection {
+  padding-top: 0px;
+}
+
+
+.app_icon_ddc {
+width:210px;
+padding-right: 10px;
+padding-left: 10px;
+}
+
+#headerMain {
+  padding: 40px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+#headerMain {
+  height: 75px;
+}
+
+
+.login_image_size{
+width: 100%;
+
+}
+
+
+.menu ul {
+width: 1200px;
+}
+
+.menu li {
+width: 170px;
+display: inline-block;;
+list-style-type: none;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+  padding: 0 0 30px;
+}
+
+.ddc_meun_top {
+position: relative;
+top:-10px;
+}
+
+.menu_divider {
+position: relative;
+top:-20px;
+}
+
+.ddc_logo_top {
+  max-width: 350px;
+  height: 235px;
+  position: relative;
+  top: 0px;
+}
+
+.login_button {
+  max-width: 240px;
+  position: relative;
+}
+
+.play_now_button {
+  max-width: 340px;
+  position: relative;
+}
+
+.ddc_header_txt {
+top: -200px;
+line-height: 0.1rem
+
+}
+
+.ddc_main_content {
+  padding-top: 25px;
+}
+
+.ddc_main_content h3{
+  font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.ddc_main_content h2{
+  font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.diamond_club_content {
+padding-top: 25px;
+}
+
+.diamond_club_content h3 {
+  font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.diamond_club_content h2{
+font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+font-size: 1.5rem;
+color: #fff;
+}
+
+.games_main_content {
+  padding-top: 25px;
+}
+
+
+
+.games_main_content h3{
+  font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.games_main_content h2{
+  font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+
+.ddc_header_txt h1{
+font-size: 1.8rem;
+/* white-space: nowrap; */
+color: #fff;
+font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+  text-shadow: 3px 3px 3px #000;
+}
+
+
+.login_columns {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  width: 1500px;
+  margin: 0px auto;
+}
+
+.login_col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+
+}
+
+.ddc_txt {
+font-size: 16px;
+font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+color: #ffffff;
+}
+
+.diamond_txt {
+font-size: 1.14rem;
+font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+color: #ffffff;
+line-height: 1.5;
+margin-bottom: 0rem;
+}
+
+.login_title_txt {
+font-size: 1.3rem;
+font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+color: #ffffff;
+}
+
+.headerSub h3 {
+font-size: 22px;
+}
+
+.pr-btn {
+  padding-right: 3rem;
+}
+
+#bgBottomNew {
+  background-color: #16375b;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-width: thick;
+  border-top-style: solid;
+  border-image: url('../images/gold_line.png') 30;
+}
+
+#bgBottomNewLounge {
+background-color: #16375b;
+padding-top: 50px;
+padding-bottom: 50px;
+border-width: thick; 
+}
+
+
+.dialog_email, .register_dialog {
+max-width: 700px;
+position: absolute;
+top: -50%;
+left: 5%;
+right: 5%;
+margin: auto;
+opacity: 0;
+z-index: 99999;
+padding: 20px 75px 30px 75px;
+  background-clip: padding-box;
+  border: 2px solid gold;
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 5px 15px rgb(0 0 0 / 80%);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 80%);
+  background: url('../images/ddc_dialog_bg.jpg');
+  background-size: cover;
+ }
+
+
+
+
+ .dialog_email h3, .register_dialog h3 {
+   color: gold;
+   font-size: 1.5rem;
+   font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+ }
+
+ .dialog_email .ddc_txt a, .register_dialog .ddc_txt a, .dialog_email .ddc_txt_privacy a, .register_dialog .ddc_txt_privacy a{
+   color: gold;
+   text-decoration: underline;
+ }
+
+
+.dialog_email_easein {
+animation: dialog_email_dialogAnim 0.5s ease-in 0.2s forwards;
+top: -50%;
+}
+
+.dialog_register_easein {
+animation: dialog_register_dialogAnim 0.5s ease-in 0.2s forwards;
+top: -50%;
+}
+
+@keyframes dialog_email_dialogAnim {
+0% {
+  top: -50%;
+  opacity: 0;
+}
+100% {
+  top: 15%;
+  opacity: 1;
+}
+}
+
+@keyframes dialog_register_dialogAnim {
+0% {
+  top: -50%;
+  opacity: 0;
+}
+100% {
+  top: 15%;
+  opacity: 1;
+}
+}
+
+.banner.bottom {
+  left: 0;
+   right: 0;
+}
+
+.cookie_btn_flex {
+  display: flex; opacity: 1; -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  flex-direction: row; 
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+
+
+.cookieWindow.banner {
+  padding: 1em 4em;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.cookieWindow {
+  position: fixed;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: Helvetica, Calibri, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: none;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  z-index: 9999;
+  opacity: 0; 
+}
+
+.cookies_bg {
+ background-color: rgba(0, 0, 0, 0.9);
+ border-top: 1px solid #777777;
+ color: #ffffff;
+}
+
+.cookie_banner_easein {
+ animation: cookie_bannerAnim 0.5s ease-in 0.2s forwards;
+}
+
+.cookie_banner_easeout {
+ animation: cookie_bannerAnimEaseOut 0.5s ease-in  forwards;
+}
+
+@keyframes cookie_bannerAnim {
+ 0% {
+   opacity: 0;
+ }
+ 100% {
+   opacity: 1;
+ }
+}
+
+@keyframes cookie_bannerAnimEaseOut {
+ 0% {
+   opacity: 1;
+ }
+ 100% {
+   opacity: 0;
+ }
+}
+
+#footerNew {
+  font-family: Verdana, Helvetica, sans-serif;
+  text-align: center;
+  color: #fff;
+  padding: 20px 25px 5px 25px;
+}
+
+#footerNew a {
+  color: #fff;
+  font-size: 13px;
+  font-weight: normal;
+  text-decoration: none;
+  letter-spacing: 0.7px;
+}
+
+.list-group-item {
+background-color: rgba(0, 0, 0, 0) !important;
+border: none !important;
+}
+
+.footerlegal {
+  text-align: center;
+  color: #4bc7ff;
+  font-size: 10px;
+  padding: 2px 0 2px 0;
+  background-image: none;
+}
+
+.hero-bg {
+background: url('../images/hero_3599x744.jpg');
+background-size: cover;
+background-position: bottom;
+
+}
+.hero-bg-online-casino {
+    background: url('../images/mar7368_Hero_noLogo_3599x942.jpg');
+    background-size: cover;
+    background-position: bottom;
+}
+
+.hero-bg-online-casino  .menu_divider {
+    position: relative;
+    top: -30px;
+}
+.hero-bg   .menu_divider {
+      position: relative;
+  }
+.hero-bg-online-casino.wof {
+    background-image: url('../images/wheelFortune_header_1898x860.jpg');
+}
+.hero-bg-online-casino.megabucks {
+    background-image: url('../images/megabucks_header_1898x860.jpg');
+}
+
+.nav-item .nav-link {
+    color: gold;
+    font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+}
+
+.nav-item .nav-link:hover{
+  color: rgba(255, 217, 0, 0.5);
+}
+
+.hero-bg-diamond-club {
+background: green;
+
+}
+.hero-bg-vegas-slots {
+background: red;
+
+}
+.hero-bg-classic-slots {
+background: purple;
+
+}
+.hero-bg-how-to-play {
+background: grey;
+
+}
+
+  .hero-bg-free-slots {
+background: blue;
+
+}
+
+.nav-hero-bottom {
+background: #8d2413;
+height: 50px;
+}
+
+.hero-content-main {
+position: relative;
+z-index: 9;
+padding-top: 25px;
+padding-bottom: 25px;
+}
+
+.hero-section {
+border-width: thick;
+border-bottom-style: solid;
+border-image: url('../images/gold_line.png') 30;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  position: relative;
+  margin-left: 42px;
+}
+
+.btn {
+  position: relative;
+  z-index: 1;
+}
+
+.tag-last-login {
+  top: 16px;
+  z-index: 2;
+  visibility: hidden;
+  margin-left: -21px;
+}
+
+.tag-last-login-lounge {
+  z-index: 2;
+  visibility: hidden;
+  margin-left: -21px;
+}
+
+
+@media only screen and (max-width: 1200px) {
+.hero-bg {
+  background: url('../images/hero_3599x744_mobile.jpg');
+  background-size: cover;
+  background-position: bottom;
+}
+
+}
+@media only screen and (max-width: 1200px) {
+
+.nav-item-crawler.nav-link, .nav-item-crawler.nav-link a  {
+  font-size: 0.8rem;
+  }
+  .col-lg-8.col-lg-offset-2 {
+display: none;
+  }
+}
+
+
+
+
+@media only screen and (max-width: 930px) { /* 221110 수정 */
+.center_crawler {
+margin: 0px auto;
+}
+
+}
+
+@media only screen and (max-width: 991px) {
+
+  .mobilelogpos {
+    position: relative; 
+    top: -50px;
+  }
+
+.loginSection {
+ padding-top: 10px;
+}
+
+.registerSection {
+ padding-top: 10px;
+}
+
+.divider_desktop {
+  display: none;
+}
+
+.divider_mobile {
+  display: block;
+}
+
+.btn_position_bottom {
+  position: relative;
+  bottom: auto;
+}
+
+}
+
+
+@media only screen and (max-width: 930px) {
+
+.nav-item .nav-link {
+  font-size: 1rem;
+}
+
+.dialog_email, .register_dialog {
+
+  padding: 10px 39px 15px 39px;
+
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+
+
+.removeMobile {
+  display: none;
+}
+
+.hero-bg-online-casino .navbar-nav {
+    flex-direction: column !important;
+}
+.nav-item {
+  text-align: center;
+  background-image: url('../images/gold_line-top.png');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+}
+
+@media only screen and (max-width: 600px) {
+
+.cookieWindow.banner {
+    padding: 1.5em 0em;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.nav-hero-bottom .navbar-nav {
+    flex-direction: row;
+}
+
+.pr-btn {
+  padding-right: 0.5rem;
+}
+h1{
+ font-size: 1.3rem;
+}
+#bgBottom {
+    height: 450px;
+}
+}
+
+button:focus{
+box-shadow:none !important;
+}
+
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}
+
+
+
+
+
+/* 221110 추가 */
+.navbar-expand-sm .navbar-nav {
+flex-wrap:wrap;
+}
+.nav-hero-bottom {
+height:auto;
+}
+
+.ddc_list {
+font-family:LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+font-size:1.14rem;
+color:#fff;
+}
+.ddc_list li + li {
+margin-top:5px;
+}
+
+.ddc_txt2 {
+font-family:LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+font-size: 16px;
+color:#fff;
+}
+
+.nav-hero-bottom .navbar-expand-sm .navbar-nav .nav-link {
+padding-right:0.35rem;
+padding-left:0.35rem;
+}
+
+.navbar-expand-sm .navbar-nav .nav-link {
+padding-right:0.55rem;
+padding-left:0.55rem;
+font-size: 0.8rem;
+}
+
+@media (min-width: 1200px){
+.navbar-expand-sm .navbar-nav .nav-link {
+  padding-right:0.55rem;
+  padding-left:0.55rem;
+  font-size:1.2rem;
+}
+}
+
+/* 221123 추가 */
+@media (min-width: 576px){
+.navbar-nav-top {
+  flex-wrap: nowrap !important;
+}
+}
+
+@media (min-width: 970px){
+.nav-link-top {
+  font-size:1.5rem !important;
+}
+}
+
+@media only screen and (max-width: 400px) {
+
+.dialog_email, .register_dialog {
+  padding: 10px 15px 15px 15px;
+
+  }
+}
+
+
+
+

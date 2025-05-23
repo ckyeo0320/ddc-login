@@ -1,0 +1,174 @@
+/* Shared */
+body 
+{
+    margin:0;
+    padding:0;
+}
+
+/* Top Hat */
+.top-hat
+{
+	background-image: url('../images/discoverability/toolbar_bg.png');
+	background-repeat: repeat-x;
+	color: #000000;
+	display: none;
+	height: 37px;
+	position:relative;
+	text-align: center;
+	vertical-align: middle;
+	width: 100%;
+}
+
+.top-hat a
+{
+	color: #00319F;
+	text-decoration: underline;
+}
+
+.top-hat .pinning-alignment
+{
+	width: 945px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding-top: 8px;
+}
+
+.top-hat .pinning-content
+{
+    line-height: 18px;
+    vertical-align: middle;
+}
+
+.top-hat .pinning-content img
+{
+	cursor:pointer;
+    height:20px;
+    float: left;
+    margin-left: 200px;
+    margin-right: 5px;
+    width:20px;
+}
+
+.top-hat .pinning-content .pinning-desc
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:14px;
+    float: left;
+    vertical-align: middle;
+    padding-top: 2px;
+}
+
+.top-hat .pinning-hide 
+{
+    background:transparent url("../images/discoverability/close.png") no-repeat top left;
+    cursor: pointer;
+	display:block;
+    height: 14px;
+    position: absolute;
+    right: 8px;
+	text-indent:-9999px;
+    top: 11px;
+    width: 14px;
+    }
+
+/* Toast */
+
+	.toast 
+	{
+		display:none;
+		background-color:#fff;
+		bottom:0;
+		border:2px solid #939699;
+		border-bottom:0;
+		border-radius:8px 8px 0 0;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:10px;
+		left:40px;
+		line-height:30px;
+		padding:0 24px 0 28px;
+		position:fixed;
+		z-index:9999;
+		}
+
+	.toast  .pinning-hide 
+	{
+		background:transparent url("../images/discoverability/close.png") no-repeat top left;
+		cursor: pointer;
+		display: block;
+		height: 14px;
+		position: absolute;
+		right: 2px;
+		text-indent:-9999px;
+		top: 2px;
+		width: 14px;
+		}
+
+	.toast img 
+	{
+		cursor:pointer;
+		height:20px;
+		position:absolute;
+		top:4px;
+		left:4px;
+		width:20px;
+	}
+
+/* Push-up */
+.push-up {
+	background:#4DB1DC url("../images/discoverability/background.gif") repeat-x;
+	bottom:0;
+	display: none;
+	height:100px;
+	left:0;
+	position:fixed;
+	width:100%;
+	z-index:9999;
+}
+
+.push-up .pinning-content {
+	height:100px;
+	margin:0 auto;
+	position:relative;
+	width:900px;
+}
+
+	.push-up .pinning-bg {
+		background:transparent url("../images/discoverability/graphic.png") no-repeat;
+		height:100px;
+		margin-left:25px;
+		position:absolute;
+		width:350px;
+	}
+
+	.push-up .pinning-desc {
+		color:#FFFFFF;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:20px;
+		left:235px;
+		position:absolute;
+		top:24px;
+		z-index:2;
+	}
+
+	.push-up img {
+		height:30px;
+		cursor:pointer;
+		left:121px;
+		position:absolute;
+		top:21px;
+		width:30px;
+	}
+
+	.push-up  .pinning-hide 
+	{
+		background:transparent url("../images/discoverability/close.png") no-repeat top left;
+		cursor: pointer;
+		display: block;
+		height: 14px;
+		position: absolute;
+		right: 8px;
+		text-indent:-9999px;
+		top: 8px;
+		width: 14px;
+		}

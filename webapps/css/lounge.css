@@ -1,0 +1,46 @@
+.lounge-login-text {
+	padding-top: 1rem;
+	font-size: 1.2rem;
+	font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+	color: #ffffff;
+	text-shadow: 1px 1px 1px #000;
+	margin-bottom: 8px;
+}
+
+.lounge-height-gap {
+	height: 25px;
+}
+
+.lounge-or-divider {
+	padding-top: 14px;
+	padding-bottom: 3px;
+	margin-top: 2px;
+}
+
+.lounge-login-btn {
+	margin: -8px 0;
+}
+
+.lounge-over-filter:hover {
+	filter: opacity(80%);
+}
+
+.lounge-cursor {
+	cursor: pointer;
+}
+.lounge-grid-center {
+	display: grid;
+	place-content: center;
+}
+
+.js-hide-if-mobile {
+}
+
+.js-show-if-mobile {
+	display: none;
+}
+
+/*.lounge-bottom-vertical-divide {*/
+/*	color: #ffffff;*/
+/*	cursor: default;*/
+/*}*/

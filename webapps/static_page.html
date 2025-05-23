@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Free Casino Games | DoubleDown Casino</title>
+		<meta name="description" content="Play Free Online Casino Games for Fun | No Deposits, No Downloads or Registration | Free Slots, Free Blackjack, Free Video Poker and Free Roulette">
+		<meta name="description" content="Play Free Online Casino Games for Fun | No Deposits, No Downloads or Registration | Free Slots, Free Blackjack, Free Video Poker and Free Roulette">
+		<meta property="og:site_name" content="DoubleDown Casino">
+		<meta property="og:title" content="DoubleDown Casino">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="With millions of players DoubleDown Casino is the best free casino where you can enjoy a variety of games including over 30+ free slots,  slot tournaments, multi-player poker, video poker, bingo, and much more.">
+		<meta property="og:image" content="https://cdn.doubledowncasino.com/bimages/fb-credits-icon.png">
+		<meta property="build-id" content="1513275927684">
+		<meta property="build-env" content="prod">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+		<style>
+			.input {
+				position: relative;
+			}
+
+			.input .eyes {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto 2px;
+				height: 30px;
+				font-size: 22px;
+				cursor: pointer;
+			}
+
+			div.loginForm {
+				width: 260px;
+			}
+
+			.item {
+				margin-top: 10px;
+			}
+
+			div.main{
+				position: relative;
+			}
+			div.main input{
+				width: 240px;
+				height: 30px;
+				text-indent: 10px;
+			}
+			div.main i{
+				margin-left: -30px;
+				cursor: pointer;
+			}
+			div.btnBox {
+				justify-content: space-between;
+			}
+			div.msgBox {
+				margin-bottom: 20px;
+			}
+			div.bottomBox, div.forgotPassBox {
+				margin-top: 10px;
+			}
+			button.btns {
+				margin-top: 20px;
+				margin-right: 5px;
+				width: 120px;
+				height: 40px;
+				cursor: pointer;
+			}
+			.textArea{
+				word-break: normal;
+				text-align: center;
+			}
+
+			#infoMessageDiv{
+				width: 300px;
+				height: 500px;
+			}
+
+			#desc{
+				width: 250px;
+				height: 400px;
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+				text-align: center;
+			}
+
+			#tryAgain{
+				width: 250px;
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+			}
+		</style>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>		
+	</head>
+	<body style="margin: 0px">
+		<div class="loginForm">
+			<div class="msgBox textArea">
+
+			</div>
+			<div class="main" id="loginDiv">
+				<a href="#" onclick="doLoginOrRegister('login','facebook'); return false;"><img src="https://static.doubledowncasino2.com/login/continue_fb_new.png"></a>
+				<a href="#" onclick="doLoginOrRegister('login','google'); return false;"><img src="https://static.doubledowncasino2.com/login/continue_fb_new.png"></a>
+				<a href="#" onclick="changeForm('EmailRegister'); return false;"><img src="https://static.doubledowncasino2.com/login/continue_fb_new.png"></a>
+			</div>
+			<div class="forgotPassBox textArea">
+
+			</div>
+			<div class="btnBox" style="display: none;">
+				<button class="btns" onclick="changeForm('')">Back</button>
+				<button id="nextBtn" class="btns" onclick="doLoginOrRegister('register', 'email')">Next</button>
+			</div>
+			<div class="bottomBox textArea"></div>
+		</div>
+
+		<div id="fb-root"></div>
+		<div id="infoMessageDiv" style="display: none;">
+			<div class="desc" id="desc"></div>
+			<button id="tryAgain" onclick="showLoginDiv()">try again</button>
+		</div>
+		<iframe src="https://landing.dev.doubledowncasino2.com/loginProxy" width="1px" height="1px" frameborder="0" scrolling="no" id="iframe_locator" name="iframe_locator" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" allowfullscreen=""></iframe>
+		<div id="fb-root"></div>		
+		<script type="text/javascript" src="./js/login.js"></script>
+		<script type="text/javascript">
+			window.startLoading = function(loginType) {
+				var loginDiv = document.getElementById("loginDiv");
+				loginDiv.style.setProperty("display", "none");
+				window.showInfoMessage(loginType + "_loading");
+			}
+
+			window.showLoginDiv = function() {
+				var loginDiv = document.getElementById("loginDiv");
+				loginDiv.style.setProperty("display", "block");
+				window.hideInfoMessage();
+			}
+
+			window.showInfoMessage = function(reason, showEntryButton) {
+				var text = '';
+				var infoMessageDiv = document.getElementById("infoMessageDiv");
+				infoMessageDiv.style.setProperty("display", "block");
+				var desc = infoMessageDiv.querySelector(".desc");
+				var tryAgainButton = infoMessageDiv.querySelector("#tryAgain");;
+
+				if(reason == "facebook_loading") {
+					text = 'Facebook account linkage<br/>is in progress.';
+					desc.innerHTML = text;
+					desc.style.setProperty("font-size", "22px");
+				} else if(reason == "google_loading") {
+					text = 'Google account linkage<br/>is in progress.';
+					desc.innerHTML = text;
+					desc.style.setProperty("font-size", "22px");
+				} else if (reason == 'fbPopup') {
+					text = 'Please accept the presented Facebook permissions to play.<br/>(Allow Pop-up Windows in Safari)';
+					desc.innerHTML = text;
+					desc.style.setProperty("font-size", "22px");
+				} else if(reason == "iframeLoadFailed") {
+					text = 'Please accept the presented Facebook permissions to play.<br/>(Allow Pop-up Windows in Safari)';
+					desc.innerHTML = text;
+					desc.style.setProperty("font-size", "22px");
+				} else if(reason == "scriptLoadFailed") {
+					text = 'Please accept the presented Facebook permissions to play.<br/>(Allow Pop-up Windows in Safari)';
+					desc.innerHTML = text;
+					desc.style.setProperty("font-size", "22px");
+				}
+
+				if(showEntryButton === true) {
+					tryAgainButton.style.setProperty("display", "block");
+				} else {
+					tryAgainButton.style.setProperty("display", "none");
+				}
+			};
+
+			window.hideInfoMessage = function() {
+				var infoMessageDiv = document.getElementById("infoMessageDiv");
+				infoMessageDiv.style.setProperty("display", "none");
+			}
+
+			function onClickEye(){
+				if (event.target.previousElementSibling.attributes.type.value == "password") {
+					event.target.previousElementSibling.attributes.type.value = "text";
+					event.target.className = "bi bi-eye-slash-fill item";
+				} else {
+					event.target.previousElementSibling.attributes.type.value = "password";
+					event.target.className = "bi bi-eye-fill item";
+				}
+			}
+
+			function changeForm(formName) {
+				$(".main").empty();
+				$(".msgBox").empty();
+				$(".forgotPassBox").empty();
+				$(".bottomBox").empty();
+				$("input").off('blur', formatCheck);
+				switch(formName) {
+					case "emailLogin":
+						$(".btnBox").show();
+						makeEmailLoginForm();
+						break;
+					case "EmailRegister":
+						$(".btnBox").show();
+						makeRegisterForm();
+						break;
+					default:
+						$(".btnBox").hide();
+						makeLoginBanner();
+						break;
+				}
+			}
+
+			function makeLoginBanner() {
+				$(".main").html("<a href='#'' onclick='doLoginOrRegister(`login`,`facebook`); return false;'><img src='https://static.doubledowncasino2.com/login/continue_fb_new.png'></a>" +
+				"<a href='#' onclick='doLoginOrRegister(`login`,`google`); return false;'><img src='https://static.doubledowncasino2.com/login/continue_fb_new.png'></a>" +
+				"<a href='#' onclick='changeForm(`EmailRegister`); return false;'><img src='https://static.doubledowncasino2.com/login/continue_fb_new.png'></a>");
+			}
+
+			function makeEmailLoginForm() {
+				setTextField(".msgBox", "Log into Doubledown casino with Your Email & password.");
+				var mainContainer = $(".main");
+				var loginInput = makeInputBox("login");
+				loginInput.id ="emailID";
+				loginInput.placeholder ="Enter Email";
+
+				mainContainer.append(loginInput);
+
+				var passwrodInput = makeInputBox("password");
+				passwrodInput.placeholder ="Enter Password";
+				passwrodInput.id ="pw";
+				mainContainer.append(passwrodInput);
+				mainContainer.append(makeEyeIcon());
+
+				setTextField(".forgotPassBox", '<a href="https://doubledowncasino1.zendesk.com/hc/en-us" >Forgot password?');
+				setTextField(".bottomBox", 'New user? <a href="#" onclick="changeForm(`EmailRegister`); return false;">REGISTER NOW');
+				$('#nextBtn').attr('onClick', 'doLoginOrRegister("login", "email")');
+				$("input").on('blur', formatCheck);
+			}
+
+			function makeRegisterForm() {
+				setTextField(".msgBox", "Register for DoubleDown Casino");
+				var mainContainer = $(".main");
+				var loginInput = makeInputBox("login");
+				loginInput.id ="emailID";
+				loginInput.placeholder ="Enter Email";
+
+				mainContainer.append(loginInput);
+
+				var passwrodInput = makeInputBox("password");
+				passwrodInput.placeholder ="Enter Password";
+				passwrodInput.id ="pw";
+				mainContainer.append(passwrodInput);
+				mainContainer.append(makeEyeIcon());
+
+				var verifyPassInput = makeInputBox("password");
+				verifyPassInput.placeholder ="Verify Password";
+				verifyPassInput.id ="verifyPw";
+				mainContainer.append(verifyPassInput);
+				mainContainer.append(makeEyeIcon());
+
+
+				setTextField(".bottomBox", 'Already registerd? <a href="#" onclick="changeForm(`emailLogin`); return false;">LOG IN');
+
+				$('#nextBtn').attr('onClick', 'doRegister()');
+				$("input").on('blur', formatCheck);
+			}
+
+			function makeInputBox(type){
+				var input = document.createElement("input");
+				input.className = "item";
+				if (type == "password") {
+					input.type = "password";
+				} else {
+					input.type = "text";
+				}
+
+				return input;
+			}
+
+			function makeEyeIcon() {
+				var icon = document.createElement("i");
+				icon.className = "bi bi-eye-fill item";
+				icon.onclick = onClickEye;
+
+				return icon;
+			}
+
+			function setTextField(clsName, text) {
+				$(clsName).html(text);
+			}
+
+			function formatCheck() {
+				var email = $('#emailID').val();
+				var pw = $('#pw').val();
+				var verifyPw = $('#verifyPw').val();
+
+				if (verifyPw == undefined){
+					verifyPw = pw;
+				}
+
+				if (email == "" && pw == "" && verifyPw == "") {
+					//setTextField(".msgBox", "Register for DoubleDown Casino");
+					return false;
+				}
+
+				if (email.indexOf("gmail.com") > -1) {
+					setTextField(".msgBox", `Please use “Sign in with Google" for Gmail.`);
+					return false;
+				}
+
+				if (validateEmail(email) == false) {
+					setTextField(".msgBox", `Requires correct email.`);
+					return false;
+				}
+
+				if(pw =="" && verifyPw == "") {
+					return false;
+				}
+
+				if (pw.length < 6 || verifyPw.length < 6) {
+					setTextField(".msgBox", `The password is not in the correct format.`);
+					return false;
+				}
+
+				if (pw != verifyPw) {
+					setTextField(".msgBox", `Check Your password.`);
+					return false;
+				}
+
+				setTextField(".msgBox", "Register for DoubleDown Casino");
+				return true;
+			}
+
+			function validateEmail(email) {
+				var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+				return re.test(email);
+			}			
+		</script>
+	</body>
+</html>

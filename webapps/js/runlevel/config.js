@@ -1,0 +1,14 @@
+var _CONFIG_={};
+_CONFIG_.applaunch={};
+_CONFIG_.applaunch.url='https://lct.doubledowncasino2.com/applaunching';
+
+_CONFIG_.firehose={};
+_CONFIG_.firehose.error='kf_ddc2_prod_log_error';
+_CONFIG_.firehose.activity='kf_ddc2_prod_log_activity';
+_CONFIG_.firehose.loading='kf_ddc2_prod_log_loading';
+_CONFIG_.firehose.impression='kf_ddc2_prod_log_impression';
+_CONFIG_.firehose.config='c716b245500b2467efacba2fedc0b62a2128e8ed56ee489af4e6dd97a0cd04e268c799692839a865875b48fcb42fd9c0b0ec72ecc51c4537e2b77f4fd86e11b6eba344afba0a755b10b5ea0cdd15e311f3883e66e75f342a4bd208ce3d422cbc599993939fa0c6187b0c8d917287c82c5a39fbfcdb8907874f8e1a3ffefa90ee6787ef89e02f46a2051c2f8290e762be';
+_CONFIG_.firehose.config_key=[11,21,32,14,25,56,77,68,39,14,11,15,66,23,98,71];
+_CONFIG_.firehose.config_iv=[54,27,36,48,63,78,12,5,9,46,31,44,23,30,6,86];
+
+_CONFIG_.loginProxyDomain='www.doubledowncasino2.com';
