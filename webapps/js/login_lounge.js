@@ -426,7 +426,7 @@ function doLogin() {
 	func.call(loginHandler, loginType, window.isPrivateMode).then(function (params) {
 		return loungeLogin(loginType, params);
 	}).then(function (response) {
-		if (response.status != "success" && response.token == null && response.message != "NOT_ENOUGH_TIER") {
+		if (response.status !== "success" && response.token == null && response.message !== "NOT_ENOUGH_TIER" && response.message !== "NOT_ENOUGH_LEVEL") {
 			setTextField(".msgBox", `Requires correct email or password.`);
 		}
 		window.loginHandler.registerType = null;
@@ -658,10 +658,10 @@ function getLoungeUrl() {
 }
 
 function goToLoungeErrorPage(response) {
-	if(response.message == "NOT_ENOUGH_TIER" || response.message == "INVALID_USER" || response.message == "DELETED_ACCOUNT_USER") {
+	if(response.message === "NOT_ENOUGH_TIER" || response.message === "NOT_ENOUGH_LEVEL" || response.message === "INVALID_USER" || response.message === "DELETED_ACCOUNT_USER") {
 		var loungeUrl = getLoungeUrl() + "error.html?type=" + response.message;
 		window.location.href = loungeUrl;
-	} else if (response.message == "INVALID_PLATFORM") {
+	} else if (response.message === "INVALID_PLATFORM") {
 		var loungeUrl = getLoungeUrl() + "error.html";
 		window.location.href = loungeUrl;
 	} else {

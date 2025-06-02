@@ -1,0 +1,242 @@
+
+.form-group {
+margin-bottom: 1rem;
+}
+
+.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+border-top-right-radius: .25em !important;
+border-bottom-right-radius: .25em !important;
+}
+
+.ddc_txt {
+  font-size: 12px;
+  font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+  color: #ffffff;
+  }
+
+
+.selected a {
+  color: #ffffff;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.button_play:active {
+  opacity: 0.5;
+}
+
+.button_play:hover {
+  filter: grayscale(100%);
+}
+
+.btn_disable {
+  filter: grayscale(100%);
+}
+
+.divider_desktop {
+  display: block;
+}
+
+.divider_mobile {
+  display: none;
+}
+
+ .loginSection {
+  padding-top: 0px;
+}
+
+.registerSection {
+  padding-top: 0px;
+}
+
+
+
+.login_button {
+  max-width: 240px;
+  position: relative;
+}
+
+.play_now_button {
+  max-width: 340px;
+  position: relative;
+}
+
+.ddc_header_txt {
+top: -200px;
+line-height: 0.1rem
+
+}
+
+
+
+.login_columns {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  width: 1500px;
+  margin: 0px auto;
+}
+
+.login_col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+
+}
+
+.ddc_txt {
+font-size: 12px;
+font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+color: #ffffff;
+}
+
+
+
+.login_title_txt {
+font-size: 1.3rem;
+font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+color: #ffffff;
+}
+
+
+.dialog_email, .register_dialog {
+max-width: 700px;
+position: absolute;
+top: -50%;
+left: 5%;
+right: 5%;
+margin: auto;
+opacity: 0;
+z-index: 99999;
+padding: 20px 75px 30px 75px;
+  background-clip: padding-box;
+  border: 2px solid gold;
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 5px 15px rgb(0 0 0 / 80%);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 80%);
+  background: url('../img/ddc_dialog_bg.jpg');
+  background-size: cover;
+ }
+
+ .dialog_email h3, .register_dialog h3 {
+   color: gold;
+   font-size: 1.5rem;
+   font-family: LeagueSpartan-SemiBold, Verdana, Helvetica, sans-serif;
+ }
+
+.ddc_txt a {
+  color: gold;
+  text-decoration: underline !important;
+}
+
+ .dialog_email .ddc_txt a, .register_dialog .ddc_txt a, .dialog_email .ddc_txt_privacy a, .register_dialog .ddc_txt_privacy a{
+   color: gold;
+   text-decoration: underline !important;
+ }
+
+.dialog_email_easein {
+animation: dialog_email_dialogAnim 0.5s ease-in 0.2s forwards;
+top: -50%;
+}
+
+.dialog_register_easein {
+animation: dialog_register_dialogAnim 0.5s ease-in 0.2s forwards;
+top: -50%;
+}
+
+@keyframes dialog_email_dialogAnim {
+0% {
+  top: -50%;
+  opacity: 0;
+}
+100% {
+  top: 15%;
+  opacity: 1;
+}
+}
+
+@keyframes dialog_register_dialogAnim {
+0% {
+  top: -50%;
+  opacity: 0;
+}
+100% {
+  top: 15%;
+  opacity: 1;
+}
+}
+
+@media only screen and (max-width: 991px) {
+
+
+.loginSection {
+ padding-top: 10px;
+}
+
+.registerSection {
+ padding-top: 10px;
+}
+
+.divider_desktop {
+  display: none;
+}
+
+.divider_mobile {
+  display: block;
+}
+
+.btn_position_bottom {
+  position: relative;
+  bottom: auto;
+}
+
+}
+
+
+@media only screen and (max-width: 930px) {
+
+
+.dialog_email, .register_dialog {
+
+  padding: 10px 39px 15px 39px;
+
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+
+
+.removeMobile {
+  display: none;
+}
+
+
+}
+
+
+
+button:focus{
+box-shadow:none !important;
+}
+
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}
+
+@media only screen and (max-width: 400px) {
+
+.dialog_email, .register_dialog {
+  padding: 10px 15px 15px 15px;
+
+  }
+}
+
+
+
+
