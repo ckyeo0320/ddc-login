@@ -1798,6 +1798,185 @@
     validateRegister(type);
   }
   </script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+
+  <iframe
+    src=""
+    width="1px"
+    height="1px"
+    frameborder="0"
+    scrolling="no"
+    id="iframe_locator"
+    name="iframe_locator"
+    webkitallowfullscreen=""
+    mozallowfullscreen=""
+    oallowfullscreen=""
+    msallowfullscreen=""
+    allowfullscreen=""
+  ></iframe>
+
+  <!-- aes crypto for aws firehose -->
+  <script src="../js/crypt.min.js"></script>
+  <script
+    src="../js/crypto-js-4.1.1.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+  ></script>
+
+  <script type="text/javascript" src="../js/aws-sdk-2.1337.0.min.js"></script>
+  <script type="text/javascript">
+    var runlevel = {
+      'desktop': 'dev',
+      'dev': 'dev',
+      'duc': 'dev-duc',
+      'v2': 'dev-v2',
+      'qa': 'qa',
+      'slot': 'qa-slot',
+      'prod': 'prod',
+      'prod-beta': 'prod',
+    };
+    var host = document.location.host;
+    var env = host.split(".")[0];
+    var target = (runlevel[env] || 'prod');
+  </script>
+  <script type="text/javascript" src="../js/runlevel/config.js"></script>
+  <script type="text/javascript">
+    var ErrorSender = {};
+    ErrorSender.config = {
+      kinesisStreamIds: {
+        'error': _CONFIG_.firehose.error,
+        'activity': _CONFIG_.firehose.activity,
+        'loading': _CONFIG_.firehose.loading,
+        'impression': _CONFIG_.firehose.impression
+      },
+      firehose_config: [_CONFIG_.firehose.config, _CONFIG_.firehose.config_key, _CONFIG_.firehose.config_iv]
+    };
+    ErrorSender.firehose_options = aesjs.decryptJSONConfig(ErrorSender.config.firehose_config);
+
+    ErrorSender._credentials = new AWS.Credentials(ErrorSender.firehose_options);
+    AWS.config.credentials = ErrorSender._credentials;
+    console.log("aws sdk credentials " + JSON.stringify(ErrorSender._credentials));
+    AWS.config.region = 'us-east-1';
+
+    ErrorSender._kinesisStreamIds = ErrorSender.config.kinesisStreamIds;
+    ErrorSender._firehose = new AWS.Firehose();
+
+    function generateUdid() {
+      var udid = null;
+      try {
+        var crypto = window.crypto || window.msCrypto;
+        var udid = 'hp-xxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          var r = crypto.getRandomValues(new Uint8Array(1))[0] % 16 | 0;
+          var v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+      } catch (e) {
+        udid = null;
+      }
+      return udid;
+    }
+
+    function getUdid() {
+      var udid = localStorage.getItem("udid");
+      if (!udid) {
+        udid = generateUdid();
+        localStorage.setItem("udid", udid);
+      }
+      return udid || "null";
+    }
+
+    function errorParams(eventType, eventName) {
+      var userAgent = window.navigator && window.navigator.userAgent;
+      var now = new Date();
+      var loginType = localStorage.getItem('loginType') || 'null';
+      var param = {
+        m: 'log_' + eventType,
+        key: eventName + '_' + loginType + '_' + now.getTime(),
+        processor: 'pp',
+        client_type: 'web',
+        device_type: 'web',
+        udid: getUdid(),
+        unixtime: now.getTime(),
+        date: now.toISOString(),
+        user_agent: userAgent
+      };
+      return param;
+    }
+
+    function sendError(eventType, param, callback) {
+      var record = {};
+      var commonParam = errorParams(eventType, "desktop_error");
+      var logParam = Object.assign({}, commonParam, param);
+      record.Data = JSON.stringify(logParam) + '\n';
+      console.log("SendError to firehose : " + record.Data);
+
+      if (logParam) {
+        if (["impression", "loading", "error", 'activity'].indexOf(eventType) >= 0) {
+          var params = {
+            DeliveryStreamName: ErrorSender._kinesisStreamIds[eventType],
+            Record: record
+          };
+          ErrorSender._firehose.putRecord(params, callback);
+        }
+      }
+    }
+  </script>
+  <script type="text/javascript" src="../js/common/ajax.js"></script>
+  <script type="text/javascript" src="../js/es5/index.js"></script>
+  <script type="text/javascript" src="../js/es5/runtime.js"></script>
+  <script type="text/javascript" src="../js/popper.js"></script>
+  <script type="text/javascript" src="../js/login.js"></script>
+  <script type="text/javascript" src="../js/jquery.slim.min.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+
+  <script type="text/javascript">
+    saveQueryString();
+
+    var mobileAndTabletcheck = function () {
+      var check = false;
+      (function (a) {
+        if (
+          /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm(os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(
+            a
+          ) ||
+          /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|blir|bm|bnl|c55|capi|ccwa|cdm|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/([klt]|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\-|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|mari|maui|mcca|medi|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-|v\-|1|2)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|w3c(\-| )|wap(| \-|g|i)|wapa|waps|wapp|wapr|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(
+            a.substr(0, 4)
+          )
+        )
+          check = true;
+      })(navigator.userAgent || navigator.vendor || window.opera);
+      return check;
+    };
+
+    if (mobileAndTabletcheck()) {
+      $(".ddc_header_txt").html(`<div class="row d-flex justify-content-center">
+                                  <img src="images/logo.png" width="300" class="img-fluid" alt="DoubleDown Casino Logo">
+                                </div>
+                                <h2 class="text-center pt-0 mt-0" style="text-shadow: 3px 3px 3px #000; color: #ffffff; font-size: 2.1rem; text-transform: none;">Play now in the <br />DoubleDown Casino app! </h2>
+                                <a href="https://doubledown.onelink.me/LFGl/Mobilepopup">
+                                  <img src="images/download.png" width="275" class="img-fluid" alt="Green Let's Play Button"/>
+                                </a>
+                                <h2 class="text-center" style="text-shadow: 3px 3px 3px #000; color: #ffffff; font-size: 2.1rem; text-transform: none;">New players get <br /><span style="text-shadow: 3px 3px 3px #000; color: #ffffff font-size: 2.2rem;">1,000,000 FREE CHIPS!</span> </h2>
+                                <div class="row d-flex justify-content-center"></div>`);
+    }
+
+    document.getElementById("iframe_locator").src = "/d/game/loginProxy";
+    //  document.getElementsByTagName("body")[0].style.backgroundImage = "url('./images/bg_gradient_blue.jpg')";
+    //  document.getElementsByTagName("body")[0].style.display = "block";
+  </script>
+
+  <script async type="text/javascript" src="https://www.google.com/jsapi?key=UA-2126857-8"></script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-NHL6RKJ"
+      height="0"
+      width="0"
+      style="display: none; visibility: hidden"
+    ></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
 <!-- Vendor JS Files -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
